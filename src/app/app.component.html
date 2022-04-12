@@ -1,7 +1,13 @@
 <h1>Application de jeux vidéos</h1>
 
 <nav>
-    <a routerLink="/accueil">Vers l'accueil</a>
+    <ul>
+        <li><a routerLink="/accueil">Vers l'accueil</a></li>
+        <li><a routerLink="/game">Vers la liste des jeux</a></li>
+        <li><a routerLink="/developer">Vers la liste des développeurs</a></li>
+        <li><a routerLink="/editor">Vers la liste des éditeurs</a></li>
+    </ul>
+    
 </nav>
 
-<app-accueil></app-accueil>
+<router-outlet></router-outlet>
