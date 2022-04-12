@@ -2,9 +2,6 @@
 
 <div class="editor">
     <div *ngFor="let editor of editors" id="entity">
-        <p>Id : {{ editor.id }} </p>
-        <p>Name : {{ editor.name }} </p>
-        <p>Parent company : {{ editor.parentCompany }} </p>
-        <p>Creation date : {{ editor.creationDate }} </p>
+        <app-editor-list [editor]="editor"></app-editor-list>
     </div>
 </div>

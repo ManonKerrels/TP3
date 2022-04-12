@@ -2,10 +2,7 @@
 
 <div class="developer">
     <div *ngFor="let developer of developers" id="entity">
-        <p>Id : {{ developer.id }} </p>
-        <p>Name : {{ developer.name }} </p>
-        <p>Parent Company : {{ developer.parentCompany }} </p>
-        <p>Creation date : {{ developer.creationDate }} </p>
+        <app-developer-list [developer]="developer"></app-developer-list>
     </div>
 </div>
 

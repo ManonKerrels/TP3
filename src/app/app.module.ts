@@ -9,6 +9,9 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { GameComponent } from './components/game/game.component';
 import { DeveloperComponent } from './components/developer/developer.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { GameListComponent } from './components/game/game-list/game-list.component';
+import { EditorListComponent } from './components/editor/editor-list/editor-list.component';
+import { DeveloperListComponent } from './components/developer/developer-list/developer-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { EditorComponent } from './components/editor/editor.component';
     AccueilComponent,
     GameComponent,
     DeveloperComponent,
-    EditorComponent
+    EditorComponent,
+    GameListComponent,
+    EditorListComponent,
+    DeveloperListComponent
   ],
   imports: [
     BrowserModule,
