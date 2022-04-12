@@ -2,6 +2,10 @@ h2{
     text-align: center;
 }
 
+h3{
+    text-decoration: double underline;
+}
+
 .intro{
     text-align: justify;
     margin: 2%;

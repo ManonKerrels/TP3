@@ -1,10 +1,10 @@
-<p>Id : {{ editor.id }} </p>
-<p>Name : {{ editor.name }} </p>
+<p><strong>Id</strong><br> {{ editor.id }} </p>
+<p><strong>Title</strong><br> {{ editor.name }} </p>
 <button (click)="onDetail()">Check details</button>
 
 
 <div *ngIf="editorDetails">
-    <p>Parent company : {{ editor.parentCompany }} </p>
-    <p>Creation date : {{ editor.creationDate }} </p>
+    <p><strong>Parent company</strong><br> {{ editor.parentCompany }} </p>
+    <p><strong>Creation date</strong><br> {{ editor.creationDate }} </p>
 </div>
 

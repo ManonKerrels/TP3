@@ -1,8 +1,8 @@
-<p>Id : {{ developer.id }} </p>
-<p>Name : {{ developer.name }} </p>
+<p><strong>Id</strong><br> {{ developer.id }} </p>
+<p><strong>Name</strong><br> {{ developer.name }} </p>
 <button (click)="onDetail()">Check details</button>
 
 <div *ngIf="developerDetails">
-    <p>Parent Company : {{ developer.parentCompany }} </p>
-    <p>Creation date : {{ developer.creationDate }} </p>
+    <p><strong>Parent Company</strong><br> {{ developer.parentCompany }} </p>
+    <p><strong>Creation date</strong><br> {{ developer.creationDate }} </p>
 </div>

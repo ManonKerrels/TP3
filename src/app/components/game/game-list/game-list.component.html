@@ -1,12 +1,12 @@
-<p>Id : {{ game.id }} </p>
-<p>Title : {{ game.title }} </p>
+<p><strong>Id</strong><br> {{ game.id }} </p>
+<p><strong>Title</strong><br> {{ game.title }} </p>
 <button (click)="onDetail()">Check details</button>
 
 <div *ngIf="gameDetails">
-    <p>Release date : {{ game.releaseDate }} </p>
-    <p>Genre : {{ game.genre }} </p>
-    <p>Portage : {{ game.portage }} </p>
-    <p>Get a licence : {{ game.licence }} </p>
+    <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
+    <p><strong>Genre</strong><br> {{ game.genre }} </p>
+    <p><strong>Portage</strong><br> {{ game.portage }} </p>
+    <p><strong>Is part of a licence</strong><br> ??? {{ game.licence }} </p>
 </div>
 
 
