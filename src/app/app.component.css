@@ -1,0 +1,9 @@
+h1{
+    text-align: center;
+}
+
+.nav{
+    border: 2px black solid;
+    max-width: 30%;
+    border-radius: 5px;
+}

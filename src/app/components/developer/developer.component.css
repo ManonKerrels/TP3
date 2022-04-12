@@ -1,0 +1,18 @@
+h3{
+    text-align: center;
+}
+
+.developer{
+    margin: 2%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#entity{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2%;
+    max-width: 30%;
+}

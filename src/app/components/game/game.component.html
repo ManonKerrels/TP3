@@ -1,10 +1,13 @@
 <h3>Liste des jeux disponibles</h3>
 
-<div *ngFor="let game of games">
-    <p>Id : {{ game.id }} </p>
-    <p>Title : {{ game.title }} </p>
-    <p>Release date : {{ game.releaseDate }} </p>
-    <p>Genre : {{ game.genre }} </p>
-    <p>Portage : {{ game.portage }} </p>
-    <p>Get a licence : {{ game.licence }} </p>
+<div class="game">
+    <div *ngFor="let game of games" id="entity">
+        <p>Id : {{ game.id }} </p>
+        <p>Title : {{ game.title }} </p>
+        <p>Release date : {{ game.releaseDate }} </p>
+        <p>Genre : {{ game.genre }} </p>
+        <p>Portage : {{ game.portage }} </p>
+        <p>Get a licence : {{ game.licence }} </p>
+    </div>
 </div>
+

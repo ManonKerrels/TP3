@@ -1,8 +1,10 @@
 <h3>Liste des éditeurs</h3>
 
-<div *ngFor="let editor of editors">
-    <p>Id : {{ editor.id }} </p>
-    <p>Name : {{ editor.name }} </p>
-    <p>Parent company : {{ editor.parentCompany }} </p>
-    <p>Creation date : {{ editor.creationDate }} </p>
+<div class="editor">
+    <div *ngFor="let editor of editors" id="entity">
+        <p>Id : {{ editor.id }} </p>
+        <p>Name : {{ editor.name }} </p>
+        <p>Parent company : {{ editor.parentCompany }} </p>
+        <p>Creation date : {{ editor.creationDate }} </p>
+    </div>
 </div>
