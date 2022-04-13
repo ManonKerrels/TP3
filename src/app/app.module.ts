@@ -12,6 +12,10 @@ import { EditorComponent } from './components/editor/editor.component';
 import { GameListComponent } from './components/game/game-list/game-list.component';
 import { EditorListComponent } from './components/editor/editor-list/editor-list.component';
 import { DeveloperListComponent } from './components/developer/developer-list/developer-list.component';
+import { AddComponent } from './components/add/add.component';
+import { AddGameComponent } from './components/add/add-game/add-game.component';
+import { AddEditorComponent } from './components/add/add-editor/add-editor.component';
+import { AddDeveloperComponent } from './components/add/add-developer/add-developer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { DeveloperListComponent } from './components/developer/developer-list/de
     EditorComponent,
     GameListComponent,
     EditorListComponent,
-    DeveloperListComponent
+    DeveloperListComponent,
+    AddComponent,
+    AddGameComponent,
+    AddEditorComponent,
+    AddDeveloperComponent
   ],
   imports: [
     BrowserModule,

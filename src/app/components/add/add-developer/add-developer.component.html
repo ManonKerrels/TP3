@@ -1,0 +1,24 @@
+<div class="add">
+    <h3>Form to add a developer</h3>
+
+    <form [formGroup]="form" (ngSubmit)="addDeveloper()">
+
+        <div>
+            <label for="input-name">Name</label><br>
+            <input type="text" id="input-name">
+        </div>
+        <br>
+        <div>
+            <label for="input-company">Parent company</label><br>
+            <input type="text" id="input-company">
+        </div>
+        <br>
+        <div>
+            <label for="input-date">Creation date</label><br>
+            <input type="date" id="input-date">
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>

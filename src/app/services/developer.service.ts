@@ -12,12 +12,18 @@ export class DeveloperService {
 
   constructor(private client: HttpClient) { }
 
+  //GET - DELETE
   getDevelopers(): Observable<Developer[]> {
     return this.client.get<Developer[]>(this.BASE_URL);
   }
 
   getDeveloper(id: number){
     return this.client.get<Developer>(this.BASE_URL + "/" + id);
+  }
+
+  //POST - PUT - PATCH
+  addDeveloper(developer: Developer){
+    return this.client.post<Developer>(this.BASE_URL + "/insert/", developer);
   }
 
 }

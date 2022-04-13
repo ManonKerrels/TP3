@@ -12,12 +12,18 @@ export class GameService {
 
   constructor(private client: HttpClient) { }
 
+  //GET - DELETE
   getGames(): Observable<Game[]> {
     return this.client.get<Game[]>(this.BASE_URL);
   }
 
   getGame(id: number){
     return this.client.get<Game>(this.BASE_URL + "/" + id);
+  }
+
+  //POST - PUT - PATCH
+  addGame(game: Game): Observable<Game>{
+    return this.client.post<Game>(this.BASE_URL, game);
   }
 
 }

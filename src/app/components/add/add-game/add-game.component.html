@@ -1,0 +1,48 @@
+<div class="add">
+    <h3>Form to add a game</h3>
+
+    <form [formGroup]="form" (ngSubmit)="addGame()">
+        <div>
+            <label for="input-title">Title</label><br>
+            <input type="text" id="input-title" formControlName="title">
+        </div>
+        <br>
+        <div>
+            <label for="input-date">Release date</label><br>
+            <input type="date" id="input-date" formControlName="date">
+        </div>
+        <br>
+        <div>
+            <label for="input-genre">Genre</label><br>
+            <input type="text" id="input-genre" formControlName="genre">
+        </div>
+        <br>
+        <div>
+            <label for="input-portage">Portage</label><br>
+            <input type="text" id="input-portage" formControlName="portage">
+        </div>
+        <br>
+        <div>
+            <label for="input-licence">Get a licence</label><br>
+            <input type="text" id="input-licence" formControlName="licence">
+        </div>
+        <br>
+        <div>
+            <label>Developer : </label><br>
+            <label for="input-dev-id">Id</label><br>
+            <input type="text" id="input-dev-id"><br>
+            <label for="input-dev-name">Name</label><br>
+            <input type="text" id="input-dev-name">
+        </div>
+        <br>
+        <div>
+            <label>Editor : </label><br>
+            <label for="input-edit-id">Id</label><br>
+            <input type="text" id="input-edit-id"><br>
+            <label for="input-edit-name">Name</label><br>
+            <input type="text" id="input-edit-name">
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>

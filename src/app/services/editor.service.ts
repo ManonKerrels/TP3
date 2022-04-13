@@ -12,12 +12,18 @@ export class EditorService {
 
   constructor(private client: HttpClient) { }
 
+  //GET - DELETE
   getEditors(): Observable<Editor[]> {
     return this.client.get<Editor[]>(this.BASE_URL);
   }
 
-  getGame(id: number){
+  getEditor(id: number){
     return this.client.get<Editor>(this.BASE_URL + "/" + id);
+  }
+
+  //POST - PUT - PATCH
+  addEditor(editor: Editor): Observable<Editor>{
+    return this.client.post<Editor>(this.BASE_URL, editor);
   }
 
 }
