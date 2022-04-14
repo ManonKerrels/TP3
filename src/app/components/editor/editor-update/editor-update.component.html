@@ -1,0 +1,24 @@
+<div class="update">
+    <h3>Form to update an editor</h3>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div>
+            <label for="input-name">Name</label><br>
+            <input type="text" id="input-name" formControlName="name">
+        </div>
+        <br>
+        <div>
+            <label for="input-company">Parent company</label><br>
+            <input type="text" id="input-company" formControlName="parentCompany">
+        </div>
+        <br>
+        <div>
+            <label for="input-date">Creation date</label><br>
+            <input type="date" id="input-date" formControlName="creationDate">
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>

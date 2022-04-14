@@ -39,4 +39,5 @@ export class GameListComponent implements OnInit {
     this.gameService.getGame(id);
   }
 
+
 }

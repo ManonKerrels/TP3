@@ -23,8 +23,14 @@ export class DeveloperService {
   }
 
   //POST - PUT - PATCH
-  sendDeveloper(form: developerForm){
+  addDeveloper(form: developerForm){
     return this.client.post<Developer>(this.BASE_URL + "/insert", form);
   }
+
+  updateDeveloper(form: developerForm, id: number){
+    return this.client.put<Developer>(this.BASE_URL + "/update/"+ id, form);
+  }
+
+
 
 }

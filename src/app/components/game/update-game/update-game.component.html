@@ -1,0 +1,36 @@
+<div class="update">
+
+    <h3>Form to update a Game</h3>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div>
+            <label for="input-title">Title</label><br>
+            <input type="text" id="input-title" formControlName="title">
+        </div>
+        <br>
+        <div>
+            <label for="input-date">Release date</label><br>
+            <input type="date" id="input-date" formControlName="releaseDate">
+        </div>
+        <br>
+        <div>
+            <label for="input-genre">Genre</label><br>
+            <input type="text" id="input-genre" formControlName="genre">
+        </div>
+        <br>
+        <div>
+            <label for="input-portage">Portage</label><br>
+            <input type="text" id="input-portage" formControlName="portage">
+        </div>
+        <br>
+        <div>
+            <label for="input-licence">Get a licence</label><br>
+            <input type="text" id="input-licence" formControlName="getLicence">
+        </div>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>

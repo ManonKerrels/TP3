@@ -27,4 +27,8 @@ export class EditorService {
     return this.client.post<Editor>(this.BASE_URL + "/insert", form);
   }
 
+  updateEditor(form: editorForm, id: number){
+    return this.client.put<Editor>(this.BASE_URL + "/update/"+ id, form);
+  }
+
 }

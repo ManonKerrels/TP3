@@ -1,6 +1,7 @@
 <p><strong>Id</strong><br> {{ editor.id }} </p>
 <p><strong>Title</strong><br> {{ editor.name }} </p>
-<button (click)="onDetail()">Check details</button>
+<button (click)="onDetail()">Check details</button><br>
+<button a routerLink="/updateEditor/{{editor.id}}">Update editor</button>
 
 
 <div *ngIf="editorDetails">

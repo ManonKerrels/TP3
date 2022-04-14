@@ -16,6 +16,9 @@ import { AddComponent } from './components/add/add.component';
 import { AddGameComponent } from './components/add/add-game/add-game.component';
 import { AddEditorComponent } from './components/add/add-editor/add-editor.component';
 import { AddDeveloperComponent } from './components/add/add-developer/add-developer.component';
+import { UpdateGameComponent } from './components/game/update-game/update-game.component';
+import { EditorUpdateComponent } from './components/editor/editor-update/editor-update.component';
+import { UpdateDeveloperComponent } from './components/developer/update-developer/update-developer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AddDeveloperComponent } from './components/add/add-developer/add-develo
     AddComponent,
     AddGameComponent,
     AddEditorComponent,
-    AddDeveloperComponent
+    AddDeveloperComponent,
+    UpdateGameComponent,
+    EditorUpdateComponent,
+    UpdateDeveloperComponent
   ],
   imports: [
     BrowserModule,

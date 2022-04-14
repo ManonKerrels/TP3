@@ -27,6 +27,10 @@ export class GameService {
     return this.client.post<Game>(this.BASE_URL + "/insert", form);
   }
 
+  updateGame(form: gameForm, id: number){
+    return this.client.put<Game>(this.BASE_URL + "/update/" + id, form);
+  }
+
   removeFromList(game: Game){}
 
 }

@@ -6,8 +6,11 @@ import { AddEditorComponent } from './components/add/add-editor/add-editor.compo
 import { AddGameComponent } from './components/add/add-game/add-game.component';
 import { AddComponent } from './components/add/add.component';
 import { DeveloperComponent } from './components/developer/developer.component';
+import { UpdateDeveloperComponent } from './components/developer/update-developer/update-developer.component';
+import { EditorUpdateComponent } from './components/editor/editor-update/editor-update.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { GameComponent } from './components/game/game.component';
+import { UpdateGameComponent } from './components/game/update-game/update-game.component';
 
 const routes: Routes = [
   { path:"", redirectTo: "accueil", pathMatch:'full' },
@@ -16,9 +19,12 @@ const routes: Routes = [
   { path:"developer", component: DeveloperComponent },
   { path: "editor", component: EditorComponent },
   { path: "add", component: AddComponent },
-  { path:"addGame", component: AddGameComponent },
-  { path:"addEditor", component: AddEditorComponent },
-  { path: "addDeveloper", component: AddDeveloperComponent }
+  { path: "addGame", component: AddGameComponent },
+  { path: "addEditor", component: AddEditorComponent },
+  { path: "addDeveloper", component: AddDeveloperComponent },
+  { path: "updateGame/:id", component: UpdateGameComponent },
+  { path: "updateEditor/:id", component: EditorUpdateComponent },
+  { path: "updateDeveloper/:id", component: UpdateDeveloperComponent }
 ];
 
 @NgModule({

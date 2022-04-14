@@ -1,13 +1,14 @@
 <p><strong>Id</strong><br> {{ game.id }} </p>
 <p><strong>Title</strong><br> {{ game.title }} </p>
 <button (click)="onDetail()">Check details</button><br>
-<button (click)="deleteGame(id)">Delete game</button>
+<button (click)="deleteGame(id)">Delete game</button><br>
+<button a routerLink="/updateGame/{{game.id}}">Update game</button>
 
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
     <p><strong>Genre</strong><br> {{ game.genre }} </p>
     <p><strong>Portage</strong><br> {{ game.portage }} </p>
-    <p><strong>Is part of a licence</strong><br> ??? {{ game.licence }} </p>
+    <p><strong>Is part of a licence</strong><br> {{  game.licence }} </p>
 </div>
 
 
