@@ -31,4 +31,8 @@ export class EditorService {
     return this.client.put<Editor>(this.BASE_URL + "/update/"+ id, form);
   }
 
+  deleteEditor(id: number){
+    return this.client.delete<Editor>(this.BASE_URL + "/delete/" + id);
+  }
+
 }

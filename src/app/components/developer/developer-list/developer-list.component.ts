@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Developer } from 'src/app/model/developer.model';
+import { DeveloperService } from 'src/app/services/developer.service';
 
 @Component({
   selector: 'app-developer-list',
@@ -14,7 +15,7 @@ export class DeveloperListComponent implements OnInit {
   developerDetails: boolean = false;
   buttonText!: String;
 
-  constructor() { }
+  constructor(private developerService: DeveloperService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,15 @@ export class DeveloperListComponent implements OnInit {
       this.developerDetails = false;
       this.buttonText = "Check details";
     }
+  }
+
+  deleteDeveloper(){
+    this.developerService.deleteDeveloper(this.developer.id)
+    .subscribe({
+      next: developer => this.developer = developer,
+      error: err => console.log("echec"),
+      complete: () => console.log("delete developer - completed")
+    });
   }
 
 }

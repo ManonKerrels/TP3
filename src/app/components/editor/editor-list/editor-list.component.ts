@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Editor } from 'src/app/model/editor.model';
+import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-editor-list',
@@ -14,7 +15,7 @@ export class EditorListComponent implements OnInit {
   editorDetails: boolean = false;
   buttonText!: String;
 
-  constructor() { }
+  constructor(private editorService: EditorService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,15 @@ export class EditorListComponent implements OnInit {
       this.editorDetails = false;
       this.buttonText = "Check details";
     }
+  }
+
+  deleteEditor(){
+    this.editorService.deleteEditor(this.editor.id)
+    .subscribe({
+      next: editor => this.editor = editor,
+      error: err => console.log("echec"),
+      complete: () => console.log("delete editor - completed")
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Game } from 'src/app/model/game.model';
 import { GameService } from 'src/app/services/game.service';
 
@@ -13,8 +14,6 @@ export class GameListComponent implements OnInit {
   game!: Game;
 
   games!: Game[];
-
-  id!: number;
 
   gameDetails: boolean = false;
   buttonText!: String;
@@ -35,8 +34,13 @@ export class GameListComponent implements OnInit {
     }
   }
 
-  deleteGame(id: number){
-    this.gameService.getGame(id);
+  deleteGame(){
+    this.gameService.deleteGame(this.game.id)
+    .subscribe({
+      next: game => this.game = game,
+      error: err => console.log("echec"),
+      complete: () => console.log("delete game - completed")
+    });
   }
 
 

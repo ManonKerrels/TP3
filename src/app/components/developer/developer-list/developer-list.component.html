@@ -1,6 +1,7 @@
 <p><strong>Id</strong><br> {{ developer.id }} </p>
 <p><strong>Name</strong><br> {{ developer.name }} </p>
 <button (click)="onDetail()">Check details</button><br>
+<button (click)="deleteDeveloper()">Delete developer</button><br>
 <button a routerLink="/updateDeveloper/{{developer.id}}">Update developer</button>
 
 <div *ngIf="developerDetails">

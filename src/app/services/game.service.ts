@@ -31,6 +31,8 @@ export class GameService {
     return this.client.put<Game>(this.BASE_URL + "/update/" + id, form);
   }
 
-  removeFromList(game: Game){}
+  deleteGame(id:number){
+    return this.client.delete<Game>(this.BASE_URL + "/delete/" + id);
+  }
 
 }

@@ -31,6 +31,10 @@ export class DeveloperService {
     return this.client.put<Developer>(this.BASE_URL + "/update/"+ id, form);
   }
 
+  deleteDeveloper(id: number){
+    return this.client.delete<Developer>(this.BASE_URL + "/delete/" + id);
+  }
+
 
 
 }
