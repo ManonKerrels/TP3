@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EDITOR_INSERT_FORM } from 'src/app/forms/game.form';
 import { Editor } from 'src/app/model/editor.model';
@@ -14,22 +14,22 @@ export class AddEditorComponent implements OnInit {
   editor!: Editor;
 
   form = new FormGroup({
-    'name': new FormControl,
-    'company': new FormControl,
-    'date': new FormControl
+    'name': new FormControl(undefined),
+    'parentCompany': new FormControl(undefined),
+    'creationDate': new FormControl(undefined)
   })
 
   constructor(private editorService: EditorService, private builder: FormBuilder) {
     this.form = builder.group(EDITOR_INSERT_FORM);
-    this.addEditor();
+    this.onSubmit();
    }
 
   ngOnInit(): void {
   }
 
-  addEditor(){
+  onSubmit(){
     if(this.form.valid){
-      this.editorService.addEditor(this.editor)
+      this.editorService.addEditor(this.form.value)
         .subscribe({
           next: editor => this.editor = editor,
           error: err => console.log("echec"),

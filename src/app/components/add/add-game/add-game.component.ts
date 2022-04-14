@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { GAME_INSERT_FORM } from 'src/app/forms/game.form';
 import { Game } from 'src/app/model/game.model';
@@ -15,23 +15,23 @@ export class AddGameComponent implements OnInit {
 
   form = new FormGroup({
     'title': new FormControl(undefined),
-    'date': new FormControl(undefined),
+    'releaseDate': new FormControl(undefined),
     'genre': new FormControl(undefined),
     'portage': new FormControl(undefined),
-    'licence': new FormControl(undefined)
+    'getLicence': new FormControl(undefined)
   })
 
   constructor(private gameService: GameService, private builder: FormBuilder) {
     this.form = builder.group(GAME_INSERT_FORM);
-    this.addGame();
+    this.onSubmit();
    }
 
   ngOnInit(): void {
   }
 
-  addGame(){
+  onSubmit(){
     if(this.form.valid){
-      this.gameService.addGame(this.game)
+      this.gameService.addGame(this.form.value)
       .subscribe({
         next: game => this.game = game,
         error: err => console.log("echec"),

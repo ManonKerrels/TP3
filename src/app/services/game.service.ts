@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game } from '../model/game.model';
+import { gameForm } from '../model/gameForm.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,10 @@ export class GameService {
   }
 
   //POST - PUT - PATCH
-  addGame(game: Game): Observable<Game>{
-    return this.client.post<Game>(this.BASE_URL, game);
+  addGame(form: gameForm): Observable<Game>{
+    return this.client.post<Game>(this.BASE_URL + "/insert", form);
   }
+
+  removeFromList(game: Game){}
 
 }

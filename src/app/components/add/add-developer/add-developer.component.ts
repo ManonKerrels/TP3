@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DEVELOPER_INSERT_FORM } from 'src/app/forms/game.form';
 import { Developer } from 'src/app/model/developer.model';
@@ -14,22 +14,22 @@ export class AddDeveloperComponent implements OnInit {
   developer!: Developer;
 
   form = new FormGroup({
-    'name': new FormControl,
-    'company': new FormControl,
-    'date': new FormControl
+    'name': new FormControl(undefined),
+    'parentCompany': new FormControl(undefined),
+    'creationDate': new FormControl(undefined)
   })
 
   constructor(private developerService: DeveloperService, private builder: FormBuilder) {
     this.builder.group(DEVELOPER_INSERT_FORM);
-    this.addDeveloper();
+    this.onSubmit();
    }
 
   ngOnInit(): void {
   }
 
-  addDeveloper(){
+  onSubmit(){
     if(this.form.valid){
-      this.developerService.addDeveloper(this.developer)
+      this.developerService.sendDeveloper(this.form.value)
       .subscribe({
         next: developer => this.developer = developer,
         error: err => console.log("echec"),

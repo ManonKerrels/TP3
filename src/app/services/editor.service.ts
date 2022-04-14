@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Editor } from '../model/editor.model';
+import { editorForm } from '../model/editorForm.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class EditorService {
   }
 
   //POST - PUT - PATCH
-  addEditor(editor: Editor): Observable<Editor>{
-    return this.client.post<Editor>(this.BASE_URL, editor);
+  addEditor(form: editorForm): Observable<Editor>{
+    return this.client.post<Editor>(this.BASE_URL + "/insert", form);
   }
 
 }

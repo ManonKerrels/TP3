@@ -1,7 +1,7 @@
 <div class="add">
     <h3>Form to add a game</h3>
 
-    <form [formGroup]="form" (ngSubmit)="addGame()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div>
             <label for="input-title">Title</label><br>
             <input type="text" id="input-title" formControlName="title">
@@ -9,7 +9,7 @@
         <br>
         <div>
             <label for="input-date">Release date</label><br>
-            <input type="date" id="input-date" formControlName="date">
+            <input type="date" id="input-date" formControlName="releaseDate">
         </div>
         <br>
         <div>
@@ -24,10 +24,10 @@
         <br>
         <div>
             <label for="input-licence">Get a licence</label><br>
-            <input type="text" id="input-licence" formControlName="licence">
+            <input type="text" id="input-licence" formControlName="getLicence">
         </div>
         <br>
-        <div>
+        <!-- <div>
             <label>Developer : </label><br>
             <label for="input-dev-id">Id</label><br>
             <input type="text" id="input-dev-id"><br>
@@ -42,7 +42,7 @@
             <label for="input-edit-name">Name</label><br>
             <input type="text" id="input-edit-name">
         </div>
-        <br>
+        <br> -->
         <button type="submit">Submit</button>
     </form>
 </div>

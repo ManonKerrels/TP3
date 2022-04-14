@@ -1,6 +1,7 @@
 <p><strong>Id</strong><br> {{ game.id }} </p>
 <p><strong>Title</strong><br> {{ game.title }} </p>
-<button (click)="onDetail()">Check details</button>
+<button (click)="onDetail()">Check details</button><br>
+<button (click)="deleteGame(id)">Delete game</button>
 
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>

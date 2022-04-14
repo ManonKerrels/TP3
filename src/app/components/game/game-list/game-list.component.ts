@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from 'src/app/model/game.model';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-game-list',
@@ -11,10 +12,15 @@ export class GameListComponent implements OnInit {
   @Input()
   game!: Game;
 
+  games!: Game[];
+
+  id!: number;
+
   gameDetails: boolean = false;
   buttonText!: String;
 
-  constructor() { }
+  constructor(private gameService: GameService) {
+   }
 
   ngOnInit(): void {
   }
@@ -27,6 +33,10 @@ export class GameListComponent implements OnInit {
       this.gameDetails = false;
       this.buttonText = "Check details";
     }
+  }
+
+  deleteGame(id: number){
+    this.gameService.getGame(id);
   }
 
 }

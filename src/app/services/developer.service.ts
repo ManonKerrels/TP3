@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Developer } from '../model/developer.model';
+import { developerForm } from '../model/developerForm.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class DeveloperService {
   }
 
   //POST - PUT - PATCH
-  addDeveloper(developer: Developer){
-    return this.client.post<Developer>(this.BASE_URL + "/insert/", developer);
+  sendDeveloper(form: developerForm){
+    return this.client.post<Developer>(this.BASE_URL + "/insert", form);
   }
 
 }
