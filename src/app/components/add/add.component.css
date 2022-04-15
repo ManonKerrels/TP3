@@ -8,3 +8,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
+h3 {
+    font-size: x-large;
+}

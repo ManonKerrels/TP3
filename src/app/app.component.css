@@ -1,5 +1,6 @@
 .app-component{
     background-image: url("src/img/back4.jpg");
+    opacity: 0.8;
     background-size: 1830px 870px;
     color: white;
     border-radius: 10px;
@@ -31,4 +32,8 @@ ul{
 
 a{
     color: white;
+}
+
+a:hover{
+    color: rgb(221, 214, 228);
 }
