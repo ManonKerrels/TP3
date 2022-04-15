@@ -1,17 +1,32 @@
-<p><strong>Id</strong><br> {{ game.id }} </p>
-<p><strong>Title</strong><br> {{ game.title }} </p>
-<br>
 <button (click)="onDetail()">Check details</button><br>
 <br>
 <button (click)="deleteGame()">Delete game</button><br>
 <br>
 <button a routerLink="/updateGame/{{game.id}}">Update game</button>
+<br>
+
+<p><strong>Id</strong><br> {{ game.id }} </p>
+<p><strong>Title</strong><br> {{ game.title }} </p>
+<br>
 
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
     <p><strong>Genre</strong><br> {{ game.genre }} </p>
     <p><strong>Portage</strong><br> {{ game.portage }} </p>
     <p><strong>Is part of a licence</strong><br> {{  game.licence }} </p>
+    <br>
+    <div class="developer">
+        <p><strong>Developer</strong></p>
+        <p> Id : {{ game.developer.id }} </p>
+        <p> Name : {{ game.developer.name }} </p>
+    </div>
+    <br>
+    <div class="editor">
+        <p><strong>Editor</strong></p>
+        <p> Id : {{ game.editor.id }} </p>
+        <p> Name : {{ game.editor.name }} </p>
+    </div>
+
 </div>
 
 

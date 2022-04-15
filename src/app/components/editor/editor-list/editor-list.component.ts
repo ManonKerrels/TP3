@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Editor } from 'src/app/model/editor.model';
+import { Game } from 'src/app/model/game.model';
 import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { EditorService } from 'src/app/services/editor.service';
   styleUrls: ['./editor-list.component.css']
 })
 export class EditorListComponent implements OnInit {
+
+  games!: Game[];
 
   @Input()
   editor!: Editor;

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Developer } from 'src/app/model/developer.model';
+import { Game } from 'src/app/model/game.model';
 import { DeveloperService } from 'src/app/services/developer.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { DeveloperService } from 'src/app/services/developer.service';
   styleUrls: ['./developer-list.component.css']
 })
 export class DeveloperListComponent implements OnInit {
+
+  games!: Game[]
 
   @Input()
   developer!: Developer;
