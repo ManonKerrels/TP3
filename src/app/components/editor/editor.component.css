@@ -2,7 +2,7 @@ h3{
     text-align: center;
 }
 
-.editor{
+.editor-list{
     margin: 2%;
     padding: 1%;
     display: flex;
@@ -16,4 +16,25 @@ h3{
     padding: 2%;
     max-width: 30%;
     text-align: center;
+}
+
+.editor{
+    margin: 2%;
+    padding: 1%;
+    background-color: rgb(229, 227, 220);
+    border-radius: 10px;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background-color: rgb(114, 104, 178);
+    padding: 0.8%;
+    border-radius: 10px;
+    color: white;
 }

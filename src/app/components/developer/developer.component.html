@@ -1,8 +1,15 @@
 <h3>Liste des développeurs</h3>
+<br>
+<div class="button">
+    <button a routerLink="/addDeveloper" >Want to add a developer ?</button>
+</div>
 
 <div class="developer">
-    <div *ngFor="let developer of developers" id="entity">
-        <app-developer-list [developer]="developer"></app-developer-list>
+    <div class="developer-list">
+        <div *ngFor="let developer of developers" id="entity">
+            <app-developer-list [developer]="developer"></app-developer-list>
+        </div>
     </div>
 </div>
+
 

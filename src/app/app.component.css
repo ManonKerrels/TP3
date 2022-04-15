@@ -1,9 +1,27 @@
+.app-component{
+    background-image: url("src/img/back4.jpg");
+    background-size: 1830px 870px;
+    color: white;
+    border-radius: 10px;
+}
+
+.header{
+    padding: 3%;
+}
+
 h1{
     text-align: center;
 }
 
 .nav{
-    border: 2px black solid;
-    max-width: 30%;
+    max-width: 45%;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    color: white;
 }

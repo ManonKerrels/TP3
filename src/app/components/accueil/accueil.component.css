@@ -1,3 +1,10 @@
+.accueil{
+    background-color: rgb(229, 227, 220);
+    border-radius: 10px;
+    margin: 2%;
+    padding: 1%;
+}
+
 h2{
     text-align: center;
 }
@@ -9,4 +16,8 @@ h3{
 .intro{
     text-align: justify;
     margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

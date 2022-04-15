@@ -1,4 +1,22 @@
 .add{
+    background-color: rgb(229, 227, 220);
+    border-radius: 10px;
     margin: 2%;
     padding: 1%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.button1{
+    background-color: rgb(114, 104, 178);
+    padding: 0.8%;
+    border-radius: 10px;
+    color: white;
 }

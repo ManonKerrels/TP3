@@ -2,7 +2,7 @@ h3{
     text-align: center;
 }
 
-.game{
+.game-list{
     margin: 2%;
     padding: 1%;
     display: flex;
@@ -18,7 +18,23 @@ h3{
     text-align: center;
 }
 
-.footer{
+.game{
     margin: 2%;
     padding: 1%;
+    background-color: rgb(229, 227, 220);
+    border-radius: 10px;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background-color: rgb(114, 104, 178);
+    padding: 0.8%;
+    border-radius: 10px;
+    color: white;
 }

@@ -1,12 +1,14 @@
 <h3>Liste des jeux disponibles</h3>
-
-<div class="game">
-    <div *ngFor="let game of games" id="entity">
-        <app-game-list [game]="game"></app-game-list>
-    </div>
+<br>
+<div class="button">
+    <button a routerLink="/addGame" >Want to add a game ?</button>
 </div>
 
-<div class="footer">
-    <button a routerLink="/addGame">Want to add a game ?</button>
 
+<div class="game">
+    <div class="game-list">
+        <div *ngFor="let game of games" id="entity">
+            <app-game-list [game]="game"></app-game-list>
+        </div>
+    </div>
 </div>
