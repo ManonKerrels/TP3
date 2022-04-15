@@ -1,7 +1,10 @@
 <p><strong>Id</strong><br> {{ game.id }} </p>
 <p><strong>Title</strong><br> {{ game.title }} </p>
+<br>
 <button (click)="onDetail()">Check details</button><br>
+<br>
 <button (click)="deleteGame()">Delete game</button><br>
+<br>
 <button a routerLink="/updateGame/{{game.id}}">Update game</button>
 
 <div *ngIf="gameDetails">
