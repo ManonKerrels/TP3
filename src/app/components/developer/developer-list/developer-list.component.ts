@@ -10,6 +10,7 @@ import { DeveloperService } from 'src/app/services/developer.service';
 })
 export class DeveloperListComponent implements OnInit {
 
+  @Input()
   games!: Game[]
 
   @Input()
