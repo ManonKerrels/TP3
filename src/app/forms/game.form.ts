@@ -5,7 +5,9 @@ export const GAME_INSERT_FORM = {
     'releaseDate': [ undefined ],
     'genre': [ '', [Validators.minLength(1), Validators.maxLength(50)]],
     'portage': [  '', [Validators.minLength(1), Validators.maxLength(50)]],
-    'getLicence': [ '', [Validators.minLength(1), Validators.maxLength(50)]]
+    'getLicence': [ '', [Validators.minLength(1), Validators.maxLength(50)]],
+    'developer': [ undefined ],
+    'editor': [ undefined ]
 }
 
 export const EDITOR_INSERT_FORM = {

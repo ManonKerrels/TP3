@@ -24,25 +24,26 @@
         <br>
         <div>
             <label for="input-licence">Get a licence</label><br>
-            <input type="text" id="input-licence" formControlName="getLicence">
-        </div>
-        <br>
-        <!-- <div>
-            <label>Developer : </label><br>
-            <label for="input-dev-id">Id</label><br>
-            <input type="text" id="input-dev-id"><br>
-            <label for="input-dev-name">Name</label><br>
-            <input type="text" id="input-dev-name">
+            <select placeholder="type" formControlName="getLicence">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
         </div>
         <br>
         <div>
-            <label>Editor : </label><br>
-            <label for="input-edit-id">Id</label><br>
-            <input type="text" id="input-edit-id"><br>
-            <label for="input-edit-name">Name</label><br>
-            <input type="text" id="input-edit-name">
+            <label for="input-developer">Developer</label><br>
+            <select placeholder="type" formControlName="developer">
+                <option [value]="developer" *ngFor="let developer of developers"> {{ developer.name }} </option>
+            </select>
         </div>
-        <br> -->
+        <br>
+        <div>
+            <label for="input-editor">Editor</label><br>
+            <select placeholder="type" formControlName="editor">
+                <option [value]="editor" *ngFor="let editor of editor"> {{ editor.name }} </option>
+            </select>
+        </div>
+        <br>
         <button type="submit">Submit</button>
     </form>
     <br>

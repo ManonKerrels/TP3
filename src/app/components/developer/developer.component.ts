@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Developer } from 'src/app/model/developer.model';
-import { Game } from 'src/app/model/game.model';
 import { DeveloperService } from 'src/app/services/developer.service';
 
 @Component({
@@ -9,6 +8,9 @@ import { DeveloperService } from 'src/app/services/developer.service';
   styleUrls: ['./developer.component.css']
 })
 export class DeveloperComponent implements OnInit {
+
+  @Output('developers')
+  emitter = new EventEmitter<Developer[]>();
 
   developers!: Developer[];
 

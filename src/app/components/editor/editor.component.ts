@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Editor } from 'src/app/model/editor.model';
 import { EditorService } from 'src/app/services/editor.service';
 
@@ -9,6 +9,9 @@ import { EditorService } from 'src/app/services/editor.service';
 })
 export class EditorComponent implements OnInit {
 
+  @Output()
+  emitter = new EventEmitter<Editor[]>();
+  
   editors!: Editor[];
 
   constructor(private editorService: EditorService) {

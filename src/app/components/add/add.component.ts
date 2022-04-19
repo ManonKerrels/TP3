@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { GameService } from 'src/app/services/game.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Developer } from 'src/app/model/developer.model';
 
 @Component({
   selector: 'app-add',
@@ -7,6 +7,8 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
+
+  developer!: Developer[];
 
   constructor() { }
 

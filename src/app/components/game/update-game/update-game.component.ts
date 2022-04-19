@@ -14,7 +14,6 @@ export class UpdateGameComponent implements OnInit {
 
   game!: Game;
   id!: number;
-  changeGame!: Game;
 
   form = new FormGroup({
     'title': new FormControl(undefined),
