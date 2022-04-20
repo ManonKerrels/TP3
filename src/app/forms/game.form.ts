@@ -21,3 +21,9 @@ export const DEVELOPER_INSERT_FORM = {
     'parentCompany': [ '', [Validators.minLength(1), Validators.maxLength(50)] ],
     'creationDate': [ undefined ]
 }
+
+export const USER_INSERT_FORM = {
+    'username': [ '', [Validators.required, Validators.minLength(1), Validators.maxLength(20)] ],
+    'password': [ '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)] ],
+    'email': [ '', [Validators.minLength(5), Validators.maxLength(50)] ]
+}

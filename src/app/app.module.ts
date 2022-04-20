@@ -19,6 +19,9 @@ import { AddDeveloperComponent } from './components/add/add-developer/add-develo
 import { UpdateGameComponent } from './components/game/update-game/update-game.component';
 import { EditorUpdateComponent } from './components/editor/editor-update/editor-update.component';
 import { UpdateDeveloperComponent } from './components/developer/update-developer/update-developer.component';
+import { UserComponent } from './components/user/user.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
+import { ConnectionComponent } from './components/user/connection/connection.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { UpdateDeveloperComponent } from './components/developer/update-develope
     AddDeveloperComponent,
     UpdateGameComponent,
     EditorUpdateComponent,
-    UpdateDeveloperComponent
+    UpdateDeveloperComponent,
+    UserComponent,
+    RegistrationComponent,
+    ConnectionComponent
   ],
   imports: [
     BrowserModule,

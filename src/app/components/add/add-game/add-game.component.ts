@@ -51,9 +51,7 @@ export class AddGameComponent implements OnInit {
 
   onSubmit(){
     if(this.form.valid){
-      // console.log(this.form.value);
-      // console.log(this.form.controls["developer"].value);
-      // console.log(this.form.controls["editor"].value);
+      // console.log(this.developer);
       this.gameService.addGame(this.form.value)
       .subscribe({
         next: game => this.game = game,
