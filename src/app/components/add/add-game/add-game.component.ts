@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { GAME_INSERT_FORM } from 'src/app/forms/game.form';
 import { Developer } from 'src/app/model/developer.model';
@@ -19,21 +19,15 @@ export class AddGameComponent implements OnInit {
 
   developer!: Developer;
 
-  editor!: Editor[];
+  editors!: Editor[];
+
+  editor!: Editor;
 
   game!: Game;
 
   id!: number;
 
-  form = new FormGroup({
-    'title': new FormControl(undefined),
-    'releaseDate': new FormControl(undefined),
-    'genre': new FormControl(undefined),
-    'portage': new FormControl(undefined),
-    'getLicence': new FormControl(undefined),
-    'developer': new FormControl(undefined),
-    'editor': new FormControl(undefined)
-  })
+  form !: FormGroup;
 
   constructor(private gameService: GameService, private builder: FormBuilder, private developerService: DeveloperService, private editorService: EditorService) {
     this.developerService.getDevelopers().subscribe({
@@ -41,11 +35,13 @@ export class AddGameComponent implements OnInit {
       error: err => console.log("echec"),
       complete: () => console.log("get developers - completed")
     });
+
     this.editorService.getEditors().subscribe({
-      next: editors => this.editor = editors,
+      next: editors => this.editors = editors,
       error: err => console.log("echec"),
       complete: () => console.log("get editors - completed")
     });
+
     this.form = builder.group(GAME_INSERT_FORM);
     this.onSubmit();
    }
@@ -55,7 +51,9 @@ export class AddGameComponent implements OnInit {
 
   onSubmit(){
     if(this.form.valid){
-
+      // console.log(this.form.value);
+      // console.log(this.form.controls["developer"].value);
+      // console.log(this.form.controls["editor"].value);
       this.gameService.addGame(this.form.value)
       .subscribe({
         next: game => this.game = game,

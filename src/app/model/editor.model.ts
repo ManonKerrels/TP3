@@ -7,3 +7,4 @@ export interface Editor{
     creationDate: Date,
     games: Game[]
 }
+

@@ -7,3 +7,4 @@ export interface Developer{
     creationDate: Date,
     games: Game[]
 }
+
