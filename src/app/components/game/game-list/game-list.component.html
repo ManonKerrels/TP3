@@ -5,9 +5,10 @@
 <button a routerLink="/updateGame/{{game.id}}">Update game</button>
 <br>
 
-<p><strong>Id</strong><br> {{ game.id }} </p>
+<p><strong>Id</strong><br> {{ game.id }} </p><br>
 <p><strong>Title</strong><br> {{ game.title }} </p>
 <br>
+
 
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
@@ -15,16 +16,46 @@
     <p><strong>Portage</strong><br> {{ game.portage }} </p>
     <p><strong>Is part of a licence</strong><br> {{  game.licence }} </p>
     <br>
+
+
+
+
     <div class="developer">
         <p><strong>Developer</strong></p>
         <p> Id : {{ game.developer.id }} </p>
         <p> Name : {{ game.developer.name }} </p>
     </div>
     <br>
+    <button (click)="displayDeveloper()">Update developer</button><br>
+    <br>
+    <div *ngIf="updateDevBool">
+        <label>Choose your developer</label><br>
+        <br>
+        <select [(ngModel)]="developer">
+            <option [ngValue]="dev" *ngFor="let dev of developers"> {{ dev.id }} - {{ dev.name }} </option>
+        </select>
+        <br>
+        <button (click)="updateDeveloper()">Submit</button>
+    </div>
+
+
+    <br>
     <div class="editor">
         <p><strong>Editor</strong></p>
-        <!-- <p> Id : {{ game.editor.id }} </p>
-        <p> Name : {{ game.editor.name }} </p> -->
+        <p> Id : {{ game.editor.id }} </p>
+        <p> Name : {{ game.editor.name }} </p>
+    </div>
+    <br>
+    <button (click)="displayEditor()">Update editor</button><br>
+    <br>
+    <div *ngIf="updateEditBool">
+        <label>Choose your editor</label><br>
+        <br>
+        <select [(ngModel)]="editor">
+            <option [ngValue]="edit" *ngFor="let edit of editors"> {{ edit.id }} - {{ edit.name }} </option>
+        </select>
+        <br>
+        <button (click)="updateEditor()">Submit</button>
     </div>
 
 </div>

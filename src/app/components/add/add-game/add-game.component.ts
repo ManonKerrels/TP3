@@ -31,7 +31,10 @@ export class AddGameComponent implements OnInit {
 
   constructor(private gameService: GameService, private builder: FormBuilder, private developerService: DeveloperService, private editorService: EditorService) {
     this.developerService.getDevelopers().subscribe({
-      next: developers => this.developers = developers,
+      next: developers => {
+        this.developers = developers;
+        console.log(developers)
+      },
       error: err => console.log("echec"),
       complete: () => console.log("get developers - completed")
     });
@@ -51,13 +54,13 @@ export class AddGameComponent implements OnInit {
 
   onSubmit(){
     if(this.form.valid){
-      // console.log(this.developer);
       this.gameService.addGame(this.form.value)
       .subscribe({
         next: game => this.game = game,
         error: err => console.log("echec"),
         complete: () => console.log("add game - completed")
       })
+      alert("Your game has been added");
     } else{
       console.log("error");
     }

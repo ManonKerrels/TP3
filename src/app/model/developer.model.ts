@@ -5,6 +5,6 @@ export interface Developer{
     name: String,
     parentCompany: String,
     creationDate: Date,
-    games: Game[]
+    game: Game[]
 }
 

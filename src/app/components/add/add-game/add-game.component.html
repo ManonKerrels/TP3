@@ -32,15 +32,15 @@
         <br>
         <div>
             <label for="input-developer">Developer</label><br>
-            <select [(ngModel)]="developer" formControlName="developer">
-                <option value=dev *ngFor="let dev of developers"> {{ dev.name }} </option>
+            <select formControlName="developer">
+                <option [ngValue]="dev" *ngFor="let dev of developers"> {{ dev.name }} </option>
             </select>
         </div>
         <br>
         <div>
             <label for="input-editor">Editor</label><br>
-            <select [(ngModel)]="editor" formControlName="editor">
-                <option value=edit *ngFor="let edit of editors"> {{ edit.name }} </option>
+            <select formControlName="editor">
+                <option [ngValue]="edit" *ngFor="let edit of editors"> {{ edit.name }} </option>
             </select>
         </div>
         <br>

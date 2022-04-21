@@ -13,7 +13,16 @@
     <p><strong>Creation date</strong><br> {{ developer.creationDate }} </p>
 
     <p><strong>Games</strong><br></p>
-    <div *ngFor="let game of games">
-        <p>Essayer d'afficher la liste des jeux</p>
+    <div *ngFor="let game of developer.game">
+        <div *ngIf="developer.game; else no_game">
+            <p> {{ game.id }} - {{ game.title }}</p>
+        </div>
+
+        <!-- Message optionnel qui ne s'affiche pas... -->
+        <ng-template #no_game> 
+            <div>
+                <p>No games for this developer</p>
+            </div>
+        </ng-template>
     </div>
 </div>

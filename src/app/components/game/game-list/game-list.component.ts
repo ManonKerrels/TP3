@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Developer } from 'src/app/model/developer.model';
+import { Editor } from 'src/app/model/editor.model';
 import { Game } from 'src/app/model/game.model';
 import { DeveloperService } from 'src/app/services/developer.service';
+import { EditorService } from 'src/app/services/editor.service';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -20,16 +22,36 @@ export class GameListComponent implements OnInit {
   developer!: Developer;
   developers!: Developer[];
 
-  id!: number;
+  @Input()
+  editor!: Editor;
+  editors!: Editor[];
 
   gameDetails: boolean = false;
   buttonText!: String;
 
-  constructor(private gameService: GameService, private developerService: DeveloperService) {
+  updateDevBool: boolean = false;
+  updateEditBool: boolean = false;
+
+  constructor(private gameService: GameService, private developerService: DeveloperService, private editorService: EditorService) {
     this.gameService.getGames().subscribe({
       next: games => this.games = games,
       error: err => console.log("echec"),
       complete: () => console.log("get games - completed")
+    });
+
+    this.developerService.getDevelopers().subscribe({
+      next: developers => {
+        this.developers = developers;
+        console.log(developers)
+      },
+      error: err => console.log("echec"),
+      complete: () => console.log("get developers - completed")
+    });
+
+    this.editorService.getEditors().subscribe({
+      next: editors => this.editors = editors,
+      error: err => console.log("echec"),
+      complete: () => console.log("get editors - completed")
     });
   }
 
@@ -55,5 +77,32 @@ export class GameListComponent implements OnInit {
     });
   }
 
+  displayDeveloper(){
+    this.updateDevBool = true;
+  }
+
+  displayEditor(){
+    this.updateEditBool = true;
+  }
+
+  updateDeveloper(){
+    this.gameService.updateDeveloper(this.game.id, this.developer.id)
+    .subscribe({
+      next: game => this.game = game,
+      error: err => console.log("echec"),
+      complete: () => alert("update developer of game - completed")
+    });
+    alert("Your developer's game has been changed");
+  }
+
+  updateEditor(){
+    this.gameService.updateEditor(this.game.id, this.editor.id)
+    .subscribe({
+      next: game => this.game = game,
+      error: err => console.log("echec"),
+      complete: () => alert("update editor of game - completed")
+    });
+    alert("Your editor's game has been changed");
+  }
 
 }
