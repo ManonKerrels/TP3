@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -7,21 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
+  _isConnected: boolean = false;
   isRegistration!: boolean;
   isConnection!: boolean;
 
-  constructor() { }
+  constructor(private userService: UserService, route: ActivatedRoute, router: Router) {
+    this._isConnected = this.userService.connected;
+   }
 
   ngOnInit(): void {
   }
 
-  onClick1(){
+  onClickRegister(){
     this.isRegistration = true;
     this.isConnection = false;
   }
 
-  onClick2(){
+  onClickConnection(){
     this.isConnection = true;
     this.isRegistration = false;
+  }
+
+  onClickDisconnection(){
+    this.userService.disconnection();
+    alert("You're disconnected");
   }
 }

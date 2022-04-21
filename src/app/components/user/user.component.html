@@ -3,17 +3,25 @@
     <p>Choose between connect to your count or register a new one.</p>
 
     <div class="choice">
-        <button (click)="onClick1()">Register</button>
-        <button (click)="onClick2()">Connect</button>
+        <button (click)="onClickRegister()">Register</button>
+        <button (click)="onClickConnection()">Connect</button>
     </div>
     
     <div *ngIf="isRegistration">
         <app-registration></app-registration>
     </div>
 
-    <div *ngIf="isConnection">
+    <div *ngIf="isConnection; else connected">
         <app-connection></app-connection>
     </div>
+
+    <ng-template #connected>
+        <div *ngIf="_isConnected">
+            <p>Here's your account</p>
+            <button (click)="onClickDisconnection()">Disconnect</button>
+        </div>
+    </ng-template>
+    
 
 
 </div>

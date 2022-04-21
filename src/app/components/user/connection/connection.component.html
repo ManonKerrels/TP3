@@ -1,1 +1,15 @@
-<p>connection works!</p>
+<h3>Connection</h3>
+
+<form [formGroup]="connexionForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="input-username">Username</label><br>
+        <input type="text" id="input-username" formControlName="username">
+    </div>
+    <br>
+    <div>
+        <label for="input-password">Password</label><br>
+        <input type="text" id="input-password" formControlName="password">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+</form>

@@ -27,3 +27,8 @@ export const USER_INSERT_FORM = {
     'password': [ '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)] ],
     'email': [ '', [Validators.minLength(5), Validators.maxLength(50)] ]
 }
+
+export const USER_CONNEXION_FORM = {
+    'username': [ '', [Validators.required] ],
+    'password': [ '', [Validators.required] ]
+}

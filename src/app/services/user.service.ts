@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { User } from '../model/user.model';
+import { UserConnection } from '../model/userConnection.model';
 import { userForm } from '../model/userForm.model';
 
 @Injectable({
@@ -9,36 +10,48 @@ import { userForm } from '../model/userForm.model';
 })
 export class UserService {
 
-  private readonly BASE_URL = "http://localhost:8080/game";
+  private readonly BASE_URL = "http://localhost:8080/user";
   obsUserIsConnected: any;
 
   constructor(private client: HttpClient) { }
 
   // CONNECTED - DISCONNECTED
-  connection(username : string, password : String){
+  connection(formConnect: UserConnection): Observable<User>{
 
     const header = {
       headers: new HttpHeaders()
-        .set('Authorization',  `Basic ${btoa(username.trim() +":" + password.trim())}`)
+        .set('Authorization',  `Basic ${btoa(formConnect.username.trim() +":" + formConnect.password.trim())}`)
     }
     
-    this.client.get(this.BASE_URL, header).subscribe({
-      next: () => {
+    return this.client.post<User>(this.BASE_URL + "/login", formConnect).pipe(
+      tap(() => {
         localStorage.setItem('connected',JSON.stringify(this.connected)); 
-        this.obsUserIsConnected.next(this.connected);
-      },
-      error: err => alert("Le pseudo ou le mot de passe est incorrect"),
-    }); 
+        // this.obsUserIsConnected.next(this.connected);
+      }),
+      catchError((err) => {
+        alert("Le pseudo ou le mot de passe est incorrect");
+        return throwError(() => "erreur")
+      } )
+    )
+    
+    
+    
+    // .subscribe({
+    //   next: () => {
+    //     localStorage.setItem('connected',JSON.stringify(this.connected)); 
+    //     // this.obsUserIsConnected.next(this.connected);
+    //   },
+    //   error: err => alert("Le pseudo ou le mot de passe est incorrect"),
+    // }); 
   }
 
   disconnection(){
     localStorage.removeItem('connected'); 
-    this.obsUserIsConnected.next(this.connected);
+    // this.obsUserIsConnected.next(this.connected);
   }
 
-
   get connected(){
-    return localStorage.getItem('connected') != null
+    return localStorage.getItem('connected') != null;
   }
 
   //GET - DELETE USER
@@ -49,6 +62,10 @@ export class UserService {
   getUser(id: number){
     return this.client.get<User>(this.BASE_URL + "/" + id);
   }
+
+  // getUserByUsername(formConnect: UserConnection){
+  //   return this.client.post<User>(this.BASE_URL + "/login", formConnect);
+  // }
 
   //POST - PUT - PATCH USER
   addUser(form: userForm): Observable<User>{

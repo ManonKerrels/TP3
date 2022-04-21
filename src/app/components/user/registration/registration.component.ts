@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
         error: err => console.log("echec"),
         complete: () => console.log("add user - completed")
       })
-      alert("Congrats ! Your accont has been created.")
+      alert("Congrats ! Your account has been created.")
     } else{
       console.log("error");
     }
