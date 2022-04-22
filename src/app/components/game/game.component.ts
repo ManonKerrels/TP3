@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Developer } from 'src/app/model/developer.model';
 import { Game } from 'src/app/model/game.model';
-import { DeveloperService } from 'src/app/services/developer.service';
 import { GameService } from 'src/app/services/game.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +15,8 @@ export class GameComponent implements OnInit {
   games!: Game[];
   developers!: Developer[];
 
-  constructor(private gameService: GameService, private router: Router) {
+  constructor(private gameService: GameService, private router: Router, private userService: UserService) {
+    userService.$connected.subscribe(() => this.isConnected);
     this.getGames();
    }
 
@@ -29,6 +30,10 @@ export class GameComponent implements OnInit {
         error: err => alert("echec"),
         complete: () => console.log("get games - completed")
     })
+  }
+
+  isConnected(){
+    return this.userService.isConnected;
   }
 
 }

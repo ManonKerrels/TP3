@@ -60,6 +60,7 @@ export class AddGameComponent implements OnInit {
         error: err => console.log("echec"),
         complete: () => console.log("add game - completed")
       })
+      window.location.reload();
       alert("Your game has been added");
     } else{
       console.log("error");

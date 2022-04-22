@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { interval } from 'rxjs';
 import { Developer } from 'src/app/model/developer.model';
 import { Editor } from 'src/app/model/editor.model';
 import { Game } from 'src/app/model/game.model';
 import { DeveloperService } from 'src/app/services/developer.service';
 import { EditorService } from 'src/app/services/editor.service';
 import { GameService } from 'src/app/services/game.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-game-list',
@@ -32,7 +34,8 @@ export class GameListComponent implements OnInit {
   updateDevBool: boolean = false;
   updateEditBool: boolean = false;
 
-  constructor(private gameService: GameService, private developerService: DeveloperService, private editorService: EditorService) {
+  constructor(private gameService: GameService, private developerService: DeveloperService, private editorService: EditorService, private userService: UserService) {
+    userService.$connected.subscribe(() => this.isConnected);
     this.gameService.getGames().subscribe({
       next: games => this.games = games,
       error: err => console.log("echec"),
@@ -53,10 +56,10 @@ export class GameListComponent implements OnInit {
       error: err => console.log("echec"),
       complete: () => console.log("get editors - completed")
     });
+
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onDetail(){
     if(this.buttonText === "Check details"){
@@ -73,8 +76,9 @@ export class GameListComponent implements OnInit {
     .subscribe({
       next: game => this.game = game,
       error: err => console.log("echec"),
-      complete: () => alert("delete game - completed")
+      complete: () => console.log("delete game - completed")
     });
+    alert("This game has been deleted");
   }
 
   displayDeveloper(){
@@ -90,7 +94,7 @@ export class GameListComponent implements OnInit {
     .subscribe({
       next: game => this.game = game,
       error: err => console.log("echec"),
-      complete: () => alert("update developer of game - completed")
+      complete: () => console.log("update developer of game - completed")
     });
     alert("Your developer's game has been changed");
   }
@@ -100,9 +104,13 @@ export class GameListComponent implements OnInit {
     .subscribe({
       next: game => this.game = game,
       error: err => console.log("echec"),
-      complete: () => alert("update editor of game - completed")
+      complete: () => console.log("update editor of game - completed")
     });
     alert("Your editor's game has been changed");
   }
 
+  isConnected(){
+    return this.userService.isConnected;
+  }
+ 
 }

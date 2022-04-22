@@ -11,16 +11,13 @@
         <app-registration></app-registration>
     </div>
 
-    <div *ngIf="isConnection; else connected">
-        <app-connection></app-connection>
+    <div *ngIf="!isConnected()">
+        <app-connection></app-connection>   
     </div>
 
-    <ng-template #connected>
-        <div *ngIf="_isConnected">
-            <p>Here's your account</p>
-            <button (click)="onClickDisconnection()">Disconnect</button>
-        </div>
-    </ng-template>
+    <div *ngIf="isConnected()">
+        <app-user-details></app-user-details>
+    </div>
     
 
 

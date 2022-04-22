@@ -35,6 +35,8 @@ export class AddEditorComponent implements OnInit {
           error: err => console.log("echec"),
           complete: () => console.log("add editor - completed")
         })
+        window.location.reload();
+        alert("Your editor has been added");
     } else{
       console.log("error");
     }

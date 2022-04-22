@@ -22,6 +22,7 @@ import { UpdateDeveloperComponent } from './components/developer/update-develope
 import { UserComponent } from './components/user/user.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ConnectionComponent } from './components/user/connection/connection.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ConnectionComponent } from './components/user/connection/connection.com
     UpdateDeveloperComponent,
     UserComponent,
     RegistrationComponent,
-    ConnectionComponent
+    ConnectionComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

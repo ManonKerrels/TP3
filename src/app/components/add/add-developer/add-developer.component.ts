@@ -21,7 +21,6 @@ export class AddDeveloperComponent implements OnInit {
 
   constructor(private developerService: DeveloperService, private builder: FormBuilder) {
     this.builder.group(DEVELOPER_INSERT_FORM);
-    this.onSubmit();
    }
 
   ngOnInit(): void {
@@ -35,6 +34,8 @@ export class AddDeveloperComponent implements OnInit {
         error: err => console.log("echec"),
         complete: () => console.log("add editor - completed")
       })
+      window.location.reload();
+        alert("Your developer has been added");
     } else{
       console.log("error");
     }

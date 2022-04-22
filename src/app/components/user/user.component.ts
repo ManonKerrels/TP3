@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,12 +10,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  _isConnected: boolean = false;
+  user!: User;
+
   isRegistration!: boolean;
   isConnection!: boolean;
 
   constructor(private userService: UserService, route: ActivatedRoute, router: Router) {
-    this._isConnected = this.userService.connected;
+    userService.$connected.subscribe(() => this.isConnected);
    }
 
   ngOnInit(): void {
@@ -30,8 +32,7 @@ export class UserComponent implements OnInit {
     this.isRegistration = false;
   }
 
-  onClickDisconnection(){
-    this.userService.disconnection();
-    alert("You're disconnected");
+  isConnected(){
+    return this.userService.isConnected;
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 import { UserConnection } from '../model/userConnection.model';
 import { userForm } from '../model/userForm.model';
@@ -13,45 +13,53 @@ export class UserService {
   private readonly BASE_URL = "http://localhost:8080/user";
   obsUserIsConnected: any;
 
-  constructor(private client: HttpClient) { }
+  private connect = new Subject<null>();
+
+  private _isConnected = false;
+
+  user!: User;
+
+  constructor(private client: HttpClient) { 
+  }
+
+  public get isConnected(){
+    return this._isConnected;
+  };
+
+  public get isUser(){
+    return this.user;
+  }
 
   // CONNECTED - DISCONNECTED
-  connection(formConnect: UserConnection): Observable<User>{
+  connection(formConnect: UserConnection){
 
     const header = {
       headers: new HttpHeaders()
         .set('Authorization',  `Basic ${btoa(formConnect.username.trim() +":" + formConnect.password.trim())}`)
     }
-    
-    return this.client.post<User>(this.BASE_URL + "/login", formConnect).pipe(
-      tap(() => {
-        localStorage.setItem('connected',JSON.stringify(this.connected)); 
-        // this.obsUserIsConnected.next(this.connected);
-      }),
-      catchError((err) => {
-        alert("Le pseudo ou le mot de passe est incorrect");
-        return throwError(() => "erreur")
-      } )
-    )
-    
-    
-    
-    // .subscribe({
-    //   next: () => {
-    //     localStorage.setItem('connected',JSON.stringify(this.connected)); 
-    //     // this.obsUserIsConnected.next(this.connected);
-    //   },
-    //   error: err => alert("Le pseudo ou le mot de passe est incorrect"),
-    // }); 
+
+    this.client.post<User>(this.BASE_URL + "/login", formConnect).subscribe({
+      next: (user) => {
+            this.user = user;
+            this._isConnected = true;
+            localStorage.setItem('connected',JSON.stringify(this.connected)); 
+          },
+      error: err => alert("Le pseudo ou le mot de passe est incorrect"),
+    })
   }
 
   disconnection(){
     localStorage.removeItem('connected'); 
-    // this.obsUserIsConnected.next(this.connected);
+    this._isConnected = false;
   }
 
+
   get connected(){
-    return localStorage.getItem('connected') != null;
+    return localStorage.getItem('connected') != null
+  }
+
+  public get $connected(): Observable<null>{
+    return this.connect;
   }
 
   //GET - DELETE USER
