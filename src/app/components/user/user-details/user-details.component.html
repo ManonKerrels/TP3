@@ -7,6 +7,14 @@
         <p>Password : {{ user.password }} </p>
         <p>Email : {{ user.email }} </p>
     </ul>
+    <br>
+    <h4>Your favourites games</h4>
+    <div *ngIf="user.games">
+        <div *ngIf="user.games==null">
+            <p>You have no games in your list</p>
+        </div>
+    </div>
+    
 </div>
 
 
