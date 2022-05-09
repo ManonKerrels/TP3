@@ -1,11 +1,10 @@
-<button (click)="onDetail()">Check details</button><br>
-<br>
 <button (click)="deleteDeveloper()">Delete developer</button><br>
 <br>
 <button a routerLink="/updateDeveloper/{{developer.id}}">Update developer</button>
 <br>
 <p><strong>Id</strong><br> {{ developer.id }} </p>
 <p><strong>Name</strong><br> {{ developer.name }} </p>
+<button (click)="onDetail()">Check details</button><br>
 
 <div *ngIf="developerDetails">
     <p><strong>Parent Company</strong><br> {{ developer.parentCompany }} </p>
@@ -13,14 +12,12 @@
 
     <p><strong>Games</strong><br></p>
     <div *ngFor="let game of developer.game">
-        <div *ngIf="developer.game; else no_game">
-            <p> {{ game.id }} - {{ game.title }}</p>
+        <div *ngIf="developer.game.length==0; else list_game">
+            <p>No games for this developer</p>
         </div>
-
-        <!-- Message optionnel qui ne s'affiche pas... -->
-        <ng-template #no_game> 
+        <ng-template #list_game> 
             <div>
-                <p>No games for this developer</p>
+                <p> {{ game.id }} - {{ game.title }}</p>
             </div>
         </ng-template>
     </div>

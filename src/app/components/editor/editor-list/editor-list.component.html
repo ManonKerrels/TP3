@@ -1,11 +1,10 @@
-<button (click)="onDetail()">Check details</button><br>
-<br>
 <button (click)="deleteEditor()">Delete editor</button><br>
 <br>
 <button a routerLink="/updateEditor/{{editor.id}}">Update editor</button>
 <br>
 <p><strong>Id</strong><br> {{ editor.id }} </p>
 <p><strong>Title</strong><br> {{ editor.name }} </p>
+<button (click)="onDetail()">Check details</button><br>
 
 <div *ngIf="editorDetails">
     <p><strong>Parent company</strong><br> {{ editor.parentCompany }} </p>

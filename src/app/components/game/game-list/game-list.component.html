@@ -1,14 +1,16 @@
-<button (click)="onDetail()">Check details</button><br>
-<br>
 <button (click)="deleteGame()">Delete game</button><br>
 <br>
-<button a routerLink="/updateGame/{{game.id}}">Update game</button>
+<button a routerLink="/updateGame/{{game.id}}">Update game</button><br>
 <br>
+<div *ngIf="isConnected()">
+    <button (click)="addToList()">Add to your list</button>
+</div>
+
 
 <p><strong>Id</strong><br> {{ game.id }} </p>
 <p><strong>Title</strong><br> {{ game.title }} </p>
 
-
+<button (click)="onDetail()">Check details</button><br>
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
     <p><strong>Genre</strong><br> {{ game.genre }} </p>
@@ -25,7 +27,6 @@
     </div>
     <button (click)="displayDeveloper()">Update developer</button><br>
     <br>
-    <!-- <button a routerLink="/updateEditor/{{editor.id}}">Details</button> -->
     <br>
 
     <div *ngIf="updateDevBool">

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
+import {Observable, Subject } from 'rxjs';
+import { Game } from '../model/game.model';
 import { User } from '../model/user.model';
 import { UserConnection } from '../model/userConnection.model';
 import { userForm } from '../model/userForm.model';
@@ -18,6 +19,8 @@ export class UserService {
   private _isConnected = false;
 
   user!: User;
+
+  game!: Game;
 
   constructor(private client: HttpClient) { 
   }

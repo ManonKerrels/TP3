@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
+import { USER_CONNEXION_FORM, USER_INSERT_FORM } from 'src/app/forms/game.form';
 import { Developer } from 'src/app/model/developer.model';
 import { Editor } from 'src/app/model/editor.model';
 import { Game } from 'src/app/model/game.model';
+import { User } from 'src/app/model/user.model';
 import { DeveloperService } from 'src/app/services/developer.service';
 import { EditorService } from 'src/app/services/editor.service';
 import { GameService } from 'src/app/services/game.service';
@@ -15,6 +17,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
+
+  user!: User;
 
   @Input()
   game!: Game;
@@ -115,5 +119,8 @@ export class GameListComponent implements OnInit {
   isConnected(){
     return this.userService.isConnected;
   }
- 
+
+  addToList(){
+    this.userService;
+  } 
 }
