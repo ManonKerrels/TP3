@@ -7,7 +7,7 @@ export interface Game{
   releaseDate: Date,
   genre: String,
   portage: String,
-  licence: boolean,
+  getLicence: boolean,
   developer: Developer,
   editor: Editor
 }

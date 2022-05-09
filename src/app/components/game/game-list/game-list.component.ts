@@ -20,6 +20,8 @@ export class GameListComponent implements OnInit {
   game!: Game;
   games!: Game[];
 
+  // myString: string = String(this.game.licence.toString());
+
   @Input()
   developer!: Developer;
   developers!: Developer[];
@@ -65,6 +67,7 @@ export class GameListComponent implements OnInit {
     if(this.buttonText === "Check details"){
       this.gameDetails = true;
       this.buttonText = "Unckeck details";
+      console.log(this.game);
     } else {
       this.gameDetails = false;
       this.buttonText = "Check details";

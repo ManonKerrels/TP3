@@ -28,3 +28,7 @@ button:hover{
     border-radius: 10px;
     color: white;
 }
+
+input.ng-dirty{
+    border: solid 2px rgb(114, 104, 178);
+}

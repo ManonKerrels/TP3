@@ -1,6 +1,8 @@
 <div class="user">
     <h2>Registration or connection</h2>
+
     <p>Choose between connect to your count or register a new one.</p>
+    
 
     <div class="choice">
         <button (click)="onClickRegister()">Register</button>
@@ -11,14 +13,14 @@
         <app-registration></app-registration>
     </div>
 
-    <div *ngIf="!isConnected()">
-        <app-connection></app-connection>   
-    </div>
+    <div *ngIf="isConnection">
+        <div *ngIf="!isConnected()">
+            <app-connection></app-connection>   
+        </div>
 
-    <div *ngIf="isConnected()">
-        <app-user-details></app-user-details>
+        <div *ngIf="isConnected()">
+            <app-user-details></app-user-details>
+        </div>
     </div>
-    
-
 
 </div>

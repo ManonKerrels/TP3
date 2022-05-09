@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { developerForm } from '../model/developerForm.model';
-import { editorForm } from '../model/editorForm.model';
 import { Game } from '../model/game.model';
 import { gameForm } from '../model/gameForm.model';
 

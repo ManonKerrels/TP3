@@ -1,10 +1,10 @@
 <div class="add">
     <h3>Form to add a game</h3>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div>
             <label for="input-title">Title</label><br>
-            <input type="text" id="input-title" formControlName="title">
+            <input type="text" id="input-title" formControlName="title" placeholder="The legend of Skyrim">
         </div>
         <br>
         <div>
@@ -14,12 +14,12 @@
         <br>
         <div>
             <label for="input-genre">Genre</label><br>
-            <input type="text" id="input-genre" formControlName="genre">
+            <input type="text" id="input-genre" formControlName="genre" placeholder="Action, aventure ...">
         </div>
         <br>
         <div>
             <label for="input-portage">Portage</label><br>
-            <input type="text" id="input-portage" formControlName="portage">
+            <input type="text" id="input-portage" formControlName="portage" placeholder="PS4 ...">
         </div>
         <br>
         <div>
