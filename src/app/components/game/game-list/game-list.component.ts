@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { interval } from 'rxjs';
-import { USER_CONNEXION_FORM, USER_INSERT_FORM } from 'src/app/forms/game.form';
+import { Component, Input, OnInit } from '@angular/core';
 import { Developer } from 'src/app/model/developer.model';
 import { Editor } from 'src/app/model/editor.model';
 import { Game } from 'src/app/model/game.model';
@@ -24,8 +21,6 @@ export class GameListComponent implements OnInit {
   game!: Game;
   games!: Game[];
 
-  // myString: string = String(this.game.licence.toString());
-
   @Input()
   developer!: Developer;
   developers!: Developer[];
@@ -41,7 +36,12 @@ export class GameListComponent implements OnInit {
   updateEditBool: boolean = false;
 
   constructor(private gameService: GameService, private developerService: DeveloperService, private editorService: EditorService, private userService: UserService) {
-    userService.$connected.subscribe(() => this.isConnected);
+    // userService.$connected.subscribe(() => {
+    //   this.isConnected;
+    // });
+    
+    this.user = userService.isUser;
+
     this.gameService.getGames().subscribe({
       next: games => this.games = games,
       error: err => console.log("echec"),
@@ -121,6 +121,15 @@ export class GameListComponent implements OnInit {
   }
 
   addToList(){
-    this.userService;
+    if(this.isConnected()){
+      this.userService.addGameToFavorites(this.user.id, this.game.id)
+    .subscribe({
+      next: user => this.user = user,
+      error: err => console.log("echec"),
+      complete: () => console.log("update favorites - completed")
+    });
+    alert("This game has been added to your list")
+    }
+
   } 
 }

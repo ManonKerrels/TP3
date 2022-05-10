@@ -56,6 +56,10 @@ export class UserService {
     this._isConnected = false;
   }
 
+  refreshUser(){
+    
+  }
+
 
   get connected(){
     return localStorage.getItem('connected') != null
@@ -89,6 +93,10 @@ export class UserService {
 
   deleteUser(id:number){
     return this.client.delete<User>(this.BASE_URL + "/delete/" + id);
+  }
+
+  addGameToFavorites(id: number, idGame: number){
+    return this.client.patch<User>(this.BASE_URL + "/update/" + id + "/fav/" + idGame, null);
   }
 
 
