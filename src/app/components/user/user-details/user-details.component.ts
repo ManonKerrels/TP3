@@ -12,15 +12,21 @@ export class UserDetailsComponent implements OnInit {
   user!: User;
 
   constructor(private userService: UserService) {
+    this.userService.refreshSubject.subscribe({
+      next: user => this.user = user
+    })
     this.user = this.userService.isUser;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onClickDisconnection(){
-    this.userService.disconnection();
-    alert("You're disconnected");
+    this.userService.refreshSubject.subscribe({
+      next: () => {
+        this.userService.disconnection();
+        alert("You're disconnected");
+      }
+    })
   }
 
 }

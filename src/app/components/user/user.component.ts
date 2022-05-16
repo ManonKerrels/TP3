@@ -23,7 +23,10 @@ export class UserComponent implements OnInit {
   }
 
   onSendUser(user: User){
-    this.user = user;
+    this.userService.refreshSubject.subscribe({
+      next: user => this.user = user
+    })
+    // this.user = user;
   }
 
   onClickRegister(){

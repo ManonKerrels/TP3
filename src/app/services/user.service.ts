@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, Subject } from 'rxjs';
+import {BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Game } from '../model/game.model';
 import { Jwt } from '../model/jwt.model';
 import { User } from '../model/user.model';
@@ -13,6 +13,7 @@ import { userForm } from '../model/userForm.model';
 export class UserService {
 
   private readonly BASE_URL = "http://localhost:8585/user";
+  public refreshSubject: BehaviorSubject<any> = new BehaviorSubject<any>('');
   obsUserIsConnected: any;
 
   JWT!: Jwt | null;
