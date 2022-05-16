@@ -9,7 +9,7 @@ import { gameForm } from '../model/gameForm.model';
 })
 export class GameService {
 
-  private readonly BASE_URL = "http://localhost:8080/game";
+  private readonly BASE_URL = "http://localhost:8585/game";
 
   constructor(private client: HttpClient) { }
 

@@ -15,7 +15,7 @@
 
     <div *ngIf="isConnection">
         <div *ngIf="!isConnected()">
-            <app-connection></app-connection>   
+            <app-connection (user)="onSendUser($event)"></app-connection>   
         </div>
 
         <div *ngIf="isConnected()">

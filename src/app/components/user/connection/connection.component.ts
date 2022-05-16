@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { interval } from 'rxjs';
 import { USER_CONNEXION_FORM } from 'src/app/forms/game.form';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -11,6 +10,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./connection.component.css']
 })
 export class ConnectionComponent implements OnInit {
+
+  @Output('user')
+  userEmitter = new EventEmitter<User>();
 
   user!: User;
 
@@ -23,8 +25,8 @@ export class ConnectionComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(){
-    this.userService.connection(this.connexionForm.value);
-    
+    this.user = this.userService.connection(this.connexionForm.value);
+    this.userEmitter.emit(this.user);
   }
 
 }

@@ -9,7 +9,7 @@ import { editorForm } from '../model/editorForm.model';
 })
 export class EditorService {
 
-  private readonly BASE_URL = "http://localhost:8080/editor";
+  private readonly BASE_URL = "http://localhost:8585/editor";
 
   constructor(private client: HttpClient) { }
 

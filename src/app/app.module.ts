@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +23,7 @@ import { UserComponent } from './components/user/user.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ConnectionComponent } from './components/user/connection/connection.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import { HeaderSetterInterceptor } from './interceptor/header-setter.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,11 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderSetterInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

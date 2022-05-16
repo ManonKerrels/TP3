@@ -22,6 +22,10 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSendUser(user: User){
+    this.user = user;
+  }
+
   onClickRegister(){
     this.isRegistration = true;
     this.isConnection = false;

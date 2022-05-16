@@ -1,28 +1,35 @@
-<h3>Welcome !</h3>
+<ng-template #loading>
+    <div>
+        <p>Loading...</p>
+    </div>
+</ng-template>
 
-<p>Here are your personnal informations :</p>
-<div class="infos">
-    <ul>
-        <p>Username : {{ user.username }} </p>
-        <p>Password : {{ user.password }} </p>
-        <p>Email : {{ user.email }} </p>
-    </ul>
-    <br>
-    
-    <h4>Your favourites games</h4>
-    <div *ngIf="user.games.length==0; else listItem">
-        <p>You have actually no games in your list.</p>
+<div *ngIf="user; else loading">
+    <h3>Welcome !</h3>
+
+    <p>Here are your personnal informations :</p>
+    <div class="infos">
+        <ul>
+            <p>Username : {{ user.username }} </p>
+            <!-- <p>Password : {{ user.password }} </p> -->
+            <p>Email : {{ user.email }} </p>
+        </ul>
+        <br>
+        
+        <h4>Your favourites games</h4>
+        <div *ngIf="user.games.length==0; else listItem">
+            <p>You have actually no games in your list.</p>
+        </div>
+
+        <ng-template #listItem>
+            <div *ngFor="let game of user.games">
+                <p>Id : {{ game.id }}</p><br>
+                <p>Title : {{ game.title }}</p>
+            </div>
+        </ng-template>
+        
     </div>
 
-    <ng-template #listItem>
-        <div *ngFor="let game of user.games">
-            <p>Id : {{ game.id }}</p><br>
-            <p>Title : {{ game.title }}</p>
-        </div>
-    </ng-template>
 
-    
+    <button (click)="onClickDisconnection()">Disconnect</button>
 </div>
-
-
-<button (click)="onClickDisconnection()">Disconnect</button>

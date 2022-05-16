@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable, Subject } from 'rxjs';
 import { Game } from '../model/game.model';
+import { Jwt } from '../model/jwt.model';
 import { User } from '../model/user.model';
 import { UserConnection } from '../model/userConnection.model';
 import { userForm } from '../model/userForm.model';
@@ -11,8 +12,10 @@ import { userForm } from '../model/userForm.model';
 })
 export class UserService {
 
-  private readonly BASE_URL = "http://localhost:8080/user";
+  private readonly BASE_URL = "http://localhost:8585/user";
   obsUserIsConnected: any;
+
+  JWT!: Jwt | null;
 
   private connect = new Subject<null>();
 
@@ -34,30 +37,33 @@ export class UserService {
   }
 
   // CONNECTED - DISCONNECTED
-  connection(formConnect: UserConnection){
+  connection(formConnect: UserConnection): User{
 
-    const header = {
-      headers: new HttpHeaders()
-        .set('Authorization',  `Basic ${btoa(formConnect.username.trim() +":" + formConnect.password.trim())}`)
-    }
-
-    this.client.post<User>(this.BASE_URL + "/login", formConnect).subscribe({
-      next: (user) => {
-            this.user = user;
+    this.client.post<Jwt>(this.BASE_URL + "/login", formConnect).subscribe({
+      next: (JWT) => {
+            this.JWT = JWT;
             this._isConnected = true;
-            localStorage.setItem('connected',JSON.stringify(this.connected)); 
+            localStorage.setItem('connected',JSON.stringify(this.connected));
+
+            this.client.get<User>(this.BASE_URL + "?username=" + JWT.username).subscribe({
+              next: user => this.user = user,
+              error: err => console.log("Username " + JWT.username + " not found")
+            })
           },
-      error: err => alert("Le pseudo ou le mot de passe est incorrect"),
-    })
+      error: err => alert("Username or password incorrect")
+    });
+
+    return this.user;
   }
 
   disconnection(){
     localStorage.removeItem('connected'); 
     this._isConnected = false;
+    this.JWT = null;
   }
 
   refreshUser(){
-    
+    //méthode pour rafraîchir la page à chaque fois qu'il y a un changement
   }
 
 
