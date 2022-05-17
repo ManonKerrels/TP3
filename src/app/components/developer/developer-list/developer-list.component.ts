@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Developer } from 'src/app/model/developer.model';
 import { Game } from 'src/app/model/game.model';
+import { User } from 'src/app/model/user.model';
 import { DeveloperService } from 'src/app/services/developer.service';
 import { GameService } from 'src/app/services/game.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-developer-list',
@@ -11,6 +13,8 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class DeveloperListComponent implements OnInit {
 
+  user!: User;
+
   @Input()
   games!: Game[]
 
@@ -18,11 +22,24 @@ export class DeveloperListComponent implements OnInit {
 
   @Input()
   developer!: Developer;
+  developers!: Developer[];
 
   developerDetails: boolean = false;
   buttonText!: String;
 
-  constructor(private developerService: DeveloperService, private gameService: GameService) { };
+  constructor(private developerService: DeveloperService, private gameService: GameService, private userService: UserService) {
+    this.user = userService.isUser;
+
+    this.userService.refreshSubject.subscribe({
+      next: () => {
+        this.developerService.getDevelopers().subscribe({
+        next: developers => this.developers = developers,
+        error: err => console.log("echec"),
+        complete: () => console.log("get developers - completed")
+      });
+      }
+    })
+   };
 
   ngOnInit(): void {
   }
@@ -45,6 +62,11 @@ export class DeveloperListComponent implements OnInit {
       error: err => console.log("echec"),
       complete: () => console.log("delete developer - completed")
     });
+    alert("Developer has been deleted");
+  }
+
+  isConnected(){
+    return this.userService.isConnected;
   }
 
 }

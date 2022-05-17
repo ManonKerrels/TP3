@@ -23,13 +23,16 @@
 
         <ng-template #listItem>
             <div *ngFor="let game of user.games">
-                <p>Id : {{ game.id }}</p><br>
-                <p>Title : {{ game.title }}</p>
+                <ul>
+                    <p> {{ game.id }} - {{ game.title }}</p> <button>Delete from list</button>
+                </ul>
             </div>
         </ng-template>
-        
+
+
+        <button (click)="onClickDisconnection()">Disconnect</button>
     </div>
 
 
-    <button (click)="onClickDisconnection()">Disconnect</button>
+    
 </div>

@@ -1,8 +1,9 @@
-<button (click)="deleteGame()">Delete game</button><br>
-<br>
-<button a routerLink="/updateGame/{{game.id}}">Update game</button><br>
-<br>
+
 <div *ngIf="isConnected()">
+    <button (click)="deleteGame()">Delete game</button><br>
+    <br>
+    <button a routerLink="/updateGame/{{game.id}}">Update game</button><br>
+    <br>
     <button (click)="addToList()">Add to your list</button>
 </div>
 
