@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class GameListComponent implements OnInit {
 
+  @Input()
   user!: User;
 
   @Input()
@@ -41,6 +42,10 @@ export class GameListComponent implements OnInit {
     // });
     
     this.user = userService.isUser;
+
+    // userService.userObs.subscribe({
+    //   next: user => this.user = user,
+    // });
 
     this.gameService.refreshSubject.subscribe({
       next: () => {
