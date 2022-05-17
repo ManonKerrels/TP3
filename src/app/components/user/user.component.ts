@@ -17,7 +17,11 @@ export class UserComponent implements OnInit {
   isConnection!: boolean;
 
   constructor(private userService: UserService, route: ActivatedRoute, router: Router) {
-    userService.$connected.subscribe(() => this.isConnected);
+    // userService.$connected.subscribe(() => this.isConnected);
+    this.user = userService.isUser;
+    this.userService.refreshSubject.subscribe({
+      next: user => this.user = user
+    })
    }
 
   ngOnInit(): void {
@@ -27,7 +31,6 @@ export class UserComponent implements OnInit {
     this.userService.refreshSubject.subscribe({
       next: user => this.user = user
     })
-    // this.user = user;
   }
 
   onClickRegister(){

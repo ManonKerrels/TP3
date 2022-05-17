@@ -14,6 +14,7 @@ export class UserService {
 
   private readonly BASE_URL = "http://localhost:8585/user";
   public refreshSubject: BehaviorSubject<any> = new BehaviorSubject<any>('');
+  public userObs: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
   obsUserIsConnected: any;
 
   JWT!: Jwt | null;
@@ -47,7 +48,7 @@ export class UserService {
             localStorage.setItem('connected',JSON.stringify(this.connected));
 
             this.client.get<User>(this.BASE_URL + "?username=" + JWT.username).subscribe({
-              next: user => this.user = user,
+              next: user => this.userObs.next(user),
               error: err => console.log("Username " + JWT.username + " not found")
             })
           },
@@ -92,7 +93,9 @@ export class UserService {
   }
 
   deleteUser(id:number): Observable<User>{
-    return this.client.delete<User>(this.BASE_URL + "/delete/" + id);
+    return this.client.delete<User>(this.BASE_URL + "/delete/" + id).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
   }
 
   // LIST OF FAVORITES

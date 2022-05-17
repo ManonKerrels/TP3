@@ -16,11 +16,13 @@ export class UserDetailsComponent implements OnInit {
   games!: Game[];
 
   @Input()
-  user!: User;
+  user?: User;
 
   constructor(private userService: UserService, private gameService: GameService) {
 
-    this.user = userService.isUser;
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
 
     this.gameService.refreshSubject.subscribe({
       next: () => {
@@ -46,7 +48,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteFromList(user: User, game: Game){
-    user = this.user;
 
     if(this.isConnected()){
       this.userService.deleteGameFromFavorites(user.id, game.id)
