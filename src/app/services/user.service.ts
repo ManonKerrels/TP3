@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject } from 'rxjs';
+import {BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Game } from '../model/game.model';
 import { Jwt } from '../model/jwt.model';
 import { User } from '../model/user.model';
@@ -81,29 +81,29 @@ export class UserService {
     return this.client.get<User[]>(this.BASE_URL);
   }
 
-  getUser(id: number){
+  getUser(id: number): Observable<User>{
     return this.client.get<User>(this.BASE_URL + "/" + id);
   }
-
-  // getUserByUsername(formConnect: UserConnection){
-  //   return this.client.post<User>(this.BASE_URL + "/login", formConnect);
-  // }
 
   //POST - PUT - PATCH USER
   addUser(form: userForm): Observable<User>{
     return this.client.post<User>(this.BASE_URL + "/insert", form);
   }
 
-  updateUser(form: userForm, id: number){
-    return this.client.put<User>(this.BASE_URL + "/update/" + id, form);
+  updateUser(form: userForm, id: number): Observable<User>{
+    return this.client.put<User>(this.BASE_URL + "/update/" + id, form).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
   }
 
-  deleteUser(id:number){
+  deleteUser(id:number): Observable<User>{
     return this.client.delete<User>(this.BASE_URL + "/delete/" + id);
   }
 
-  addGameToFavorites(id: number, idGame: number){
-    return this.client.patch<User>(this.BASE_URL + "/update/" + id + "/fav/" + idGame, null);
+  addGameToFavorites(id: number, idGame: number): Observable<User>{
+    return this.client.patch<User>(this.BASE_URL + "/update/" + id + "/fav/" + idGame, null).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
   }
 
 
