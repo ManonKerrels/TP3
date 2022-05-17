@@ -42,27 +42,39 @@ export class GameListComponent implements OnInit {
     
     this.user = userService.isUser;
 
-    this.gameService.getGames().subscribe({
-      next: games => this.games = games,
-      error: err => console.log("echec"),
-      complete: () => console.log("get games - completed")
-    });
-
-    this.developerService.getDevelopers().subscribe({
-      next: developers => {
-        this.developers = developers;
-        console.log(developers)
-      },
-      error: err => console.log("echec"),
-      complete: () => console.log("get developers - completed")
-    });
-
-    this.editorService.getEditors().subscribe({
-      next: editors => this.editors = editors,
-      error: err => console.log("echec"),
-      complete: () => console.log("get editors - completed")
-    });
-
+    this.userService.refreshSubject.subscribe({
+      next: () => {
+        this.gameService.getGames().subscribe({
+        next: games => this.games = games,
+        error: err => console.log("echec"),
+        complete: () => console.log("get games - completed")
+      });
+      }
+    })
+    
+    this.userService.refreshSubject.subscribe({
+      next: () => {
+        this.developerService.getDevelopers().subscribe({
+        next: developers => {
+          this.developers = developers;
+          console.log(developers)
+        },
+        error: err => console.log("echec"),
+        complete: () => console.log("get developers - completed")
+      });
+      }
+    })
+    
+    this.userService.refreshSubject.subscribe({
+      next: () => {
+        this.editorService.getEditors().subscribe({
+        next: editors => this.editors = editors,
+        error: err => console.log("echec"),
+        complete: () => console.log("get editors - completed")
+      });
+      }
+    })
+    
   }
 
   ngOnInit(): void { }
