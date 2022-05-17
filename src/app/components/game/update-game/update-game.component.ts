@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GAME_INSERT_FORM } from 'src/app/forms/game.form';
 import { Game } from 'src/app/model/game.model';
 import { GameService } from 'src/app/services/game.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-game',
@@ -23,7 +24,7 @@ export class UpdateGameComponent implements OnInit {
     'getLicence': new FormControl(undefined)
   })
 
-  constructor(private gameService: GameService, private builder: FormBuilder, private route: ActivatedRoute) {
+  constructor(private gameService: GameService, private builder: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
     this.id = route.snapshot.params['id'];
     this.form = builder.group(GAME_INSERT_FORM);
     this.onSubmit();
