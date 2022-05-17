@@ -3,13 +3,10 @@
 
     <p>Choose between connect to your count or register a new one.</p>
     
-
-    <!-- <div *ngIf="!isConnected()"> -->
-        <div class="choice">
-            <button (click)="onClickRegister()">Register</button>
-            <button (click)="onClickConnection()">Connect</button>
-        </div>
-    <!-- </div> -->
+    <div class="choice">
+        <button (click)="onClickRegister()">Register</button>
+        <button (click)="onClickConnection()">Connect</button>
+    </div>
     
     
     <div *ngIf="isRegistration">

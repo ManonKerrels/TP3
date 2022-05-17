@@ -42,7 +42,7 @@ export class GameListComponent implements OnInit {
     
     this.user = userService.isUser;
 
-    this.userService.refreshSubject.subscribe({
+    this.gameService.refreshSubject.subscribe({
       next: () => {
         this.gameService.getGames().subscribe({
         next: games => this.games = games,
@@ -52,7 +52,7 @@ export class GameListComponent implements OnInit {
       }
     })
     
-    this.userService.refreshSubject.subscribe({
+    this.developerService.refreshSubject.subscribe({
       next: () => {
         this.developerService.getDevelopers().subscribe({
         next: developers => {
@@ -65,7 +65,7 @@ export class GameListComponent implements OnInit {
       }
     })
     
-    this.userService.refreshSubject.subscribe({
+    this.editorService.refreshSubject.subscribe({
       next: () => {
         this.editorService.getEditors().subscribe({
         next: editors => this.editors = editors,

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Game } from 'src/app/model/game.model';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
 

@@ -95,11 +95,17 @@ export class UserService {
     return this.client.delete<User>(this.BASE_URL + "/delete/" + id);
   }
 
+  // LIST OF FAVORITES
   addGameToFavorites(id: number, idGame: number): Observable<User>{
     return this.client.patch<User>(this.BASE_URL + "/update/" + id + "/fav/" + idGame, null).pipe(
       tap(() => this.refreshSubject.next(''))
     );
   }
 
+  deleteGameFromFavorites(id: number, idGame: number): Observable<User>{
+    return this.client.patch<User>(this.BASE_URL + "/update/" + id + "/delete/" + idGame, null).pipe(
+      tap(() => this.refreshSubject.next(''))
+    );
+  }
 
 }
