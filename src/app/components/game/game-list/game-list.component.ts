@@ -94,7 +94,7 @@ export class GameListComponent implements OnInit {
     this.gameService.deleteGame(this.game.id)
     .subscribe({
       next: game => this.game = game,
-      error: err => console.log("echec"),
+      error: err => console.log(err),
       complete: () => console.log("delete game - completed")
     });
     alert("This game has been deleted");

@@ -20,7 +20,7 @@ export class HeaderSetterInterceptor implements HttpInterceptor {
         setHeaders:{
           'Content-Type' : 'application/json; charset=utf-8',
           'Accept'       : 'application/json',
-          'Authorization': `Bearer ${this.userService.JWT}`
+          'Authorization': `Bearer ${this.userService.JWT?.jwt}`
         }
       });
     }

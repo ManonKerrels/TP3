@@ -63,11 +63,6 @@ export class UserService {
     this.JWT = null;
   }
 
-  // refreshUser(){
-  //   //méthode pour rafraîchir la page à chaque fois qu'il y a un changement
-  // }
-
-
   get connected(){
     return localStorage.getItem('connected') != null
   }
