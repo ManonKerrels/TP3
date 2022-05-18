@@ -37,11 +37,6 @@ export class GameListComponent implements OnInit {
   updateEditBool: boolean = false;
 
   constructor(private gameService: GameService, private developerService: DeveloperService, private editorService: EditorService, private userService: UserService) {
-    // userService.$connected.subscribe(() => {
-    //   this.isConnected;
-    // });
-    
-    // this.user = userService.isUser;
 
     userService.userObs.subscribe({
       next: user => this.user = user,

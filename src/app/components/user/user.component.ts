@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -10,16 +10,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  user!: User;
+  user?: User;
 
   isRegistration!: boolean;
   isConnection!: boolean;
 
   constructor(private userService: UserService, route: ActivatedRoute, router: Router) {
     this.user = userService.isUser;
-    this.userService.refreshSubject.subscribe({
-      next: user => this.user = user
-    })
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
    }
 
   ngOnInit(): void {
