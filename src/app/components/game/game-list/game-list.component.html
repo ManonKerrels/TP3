@@ -10,7 +10,8 @@
 
 <p><strong>Id</strong><br> {{ game.id }} </p>
 <p><strong>Title</strong><br> {{ game.title }} </p>
-
+<img src="assets/R.jpg" alt="game" title="game_cover" width="50%" height="50%">
+<br>
 <button (click)="onDetail()">Check details</button><br>
 <div *ngIf="gameDetails">
     <p><strong>Release date</strong><br> {{ game.releaseDate }} </p>
@@ -44,7 +45,7 @@
     <br>
     <div class="editor">
         <p><strong>Editor</strong></p>
-        <p> Id : {{ game.editor.id }} </p>
+        <p> /Id : {{ game.editor.id }} </p>
         <p> Name : {{ game.editor.name }} </p>
     </div>
     <button (click)="displayEditor()">Update editor</button><br>

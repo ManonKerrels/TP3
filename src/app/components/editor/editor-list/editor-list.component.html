@@ -7,6 +7,8 @@
 
 <p><strong>Id</strong><br> {{ editor.id }} </p>
 <p><strong>Title</strong><br> {{ editor.name }} </p>
+<img src="assets/editor.jpg" alt="game" title="game_cover" width="50%" height="50%">
+<br>
 <button (click)="onDetail()">Check details</button><br>
 
 <div *ngIf="editorDetails">
@@ -15,9 +17,14 @@
 
     <p><strong>Games</strong><br></p>
     <div *ngFor="let game of editor.games">
-        <div *ngIf="editor.games">
-            <p> {{ game.id }} - {{ game.title }}</p>
+        <div *ngIf="editor.games.length==0; else list_game">
+            <p>No game for this editor</p>
         </div>
+        <ng-template #list_game> 
+            <div>
+                <p> {{ game.id }} - {{ game.title }}</p>
+            </div>
+        </ng-template>
     </div>
 
 </div>

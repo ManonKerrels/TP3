@@ -3,7 +3,6 @@ import { Developer } from 'src/app/model/developer.model';
 import { Game } from 'src/app/model/game.model';
 import { User } from 'src/app/model/user.model';
 import { DeveloperService } from 'src/app/services/developer.service';
-import { GameService } from 'src/app/services/game.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class DeveloperListComponent implements OnInit {
 
   @Input()
   games!: Game[]
-
   game!: Game;
 
   @Input()
@@ -27,7 +25,7 @@ export class DeveloperListComponent implements OnInit {
   developerDetails: boolean = false;
   buttonText!: String;
 
-  constructor(private developerService: DeveloperService, private gameService: GameService, private userService: UserService) {
+  constructor(private developerService: DeveloperService, private userService: UserService) {
     this.user = userService.isUser;
 
     this.userService.refreshSubject.subscribe({
@@ -45,7 +43,6 @@ export class DeveloperListComponent implements OnInit {
   }
 
   onDetail(){
-    console.log(this.developer.game);
     if(this.buttonText === "Check details"){
       this.developerDetails = true;
       this.buttonText = "Unckeck details";

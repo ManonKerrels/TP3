@@ -12,9 +12,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EditorListComponent implements OnInit {
 
-  user!: User;
+  user?: User;
 
+  @Input()
   games!: Game[];
+  game!: Game;
 
   @Input()
   editor!: Editor;
@@ -24,7 +26,9 @@ export class EditorListComponent implements OnInit {
   buttonText!: String;
 
   constructor(private editorService: EditorService, private userService: UserService) { 
-    this.user = userService.isUser;
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
 
     this.userService.refreshSubject.subscribe({
       next: () => {
