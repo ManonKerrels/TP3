@@ -11,13 +11,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  user!: User;
+  user?: User;
 
   form !: FormGroup;
 
   constructor(private builder: FormBuilder, private userService: UserService) { 
     this.form = builder.group(USER_INSERT_FORM);
     this.onSubmit();
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
   }
 
   ngOnInit(): void {

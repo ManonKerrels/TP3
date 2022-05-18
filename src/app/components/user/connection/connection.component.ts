@@ -14,15 +14,15 @@ export class ConnectionComponent implements OnInit {
   @Output('user')
   userEmitter = new EventEmitter<User>();
 
-  user!: User;
+  user?: User;
 
   connexionForm !: FormGroup;
 
   constructor(private builder: FormBuilder, private userService: UserService) {
     this.connexionForm = builder.group(USER_CONNEXION_FORM);
-    this.userService.refreshSubject.subscribe({
-      next: user => this.user = user
-    })
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
   }
 
   ngOnInit(): void {}

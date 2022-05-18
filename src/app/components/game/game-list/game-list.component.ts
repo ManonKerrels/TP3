@@ -16,7 +16,7 @@ import { UserService } from 'src/app/services/user.service';
 export class GameListComponent implements OnInit {
 
   @Input()
-  user!: User;
+  user!: User | undefined;
 
   @Input()
   game!: Game;
@@ -41,11 +41,11 @@ export class GameListComponent implements OnInit {
     //   this.isConnected;
     // });
     
-    this.user = userService.isUser;
+    // this.user = userService.isUser;
 
-    // userService.userObs.subscribe({
-    //   next: user => this.user = user,
-    // });
+    userService.userObs.subscribe({
+      next: user => this.user = user,
+    });
 
     this.gameService.refreshSubject.subscribe({
       next: () => {
@@ -139,7 +139,7 @@ export class GameListComponent implements OnInit {
 
   addToList(){
     if(this.isConnected()){
-      this.userService.addGameToFavorites(this.user.id, this.game.id)
+      this.userService.addGameToFavorites(this.user!.id, this.game.id)
     .subscribe({
       next: user => this.user = user,
       error: err => console.log("echec"),
